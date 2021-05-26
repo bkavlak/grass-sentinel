@@ -1,0 +1,15 @@
+# Navigate to the Driver Location
+cd {DRIVER DIRECTORY}
+
+# To run docker container
+sudo docker run -it --name grass -v {YOUR VOLUME DIRECTORY}:/data mundialis/grass-py3-pdal:stable-ubuntu bash
+
+# Add missing packages
+pip3 install sentinelsat pandas
+pip3 install "pygdal>=2.2.3,<2.2.4"
+
+# Start Grass
+grass -c EPSG:32636 grassdata/proj36Loc
+
+# Add missing extensions
+g.extension extension=i.sentinel
